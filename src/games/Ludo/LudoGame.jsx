@@ -1,5 +1,12 @@
+// LudoGame.jsx
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import "./LudoGame.css";
+import {
+  playDiceRollSound,
+  playTileSlideSound,
+  playWinSound,
+  playBonusSixSound,
+} from "../../utils/soundFX";
 
 const API_URL = "https://classic-arcade-backend.onrender.com/api/ludo";
 
@@ -123,6 +130,7 @@ export default function LudoGame() {
   const rollDice = async () => {
     if (isRolling || isMoving || loading || gameState?.hasRolled || gameState?.gameOver) return;
     try {
+      playDiceRollSound(); // Dice rattle sound when rolling starts
       setIsRolling(true);
       setError("");
 
@@ -136,6 +144,11 @@ export default function LudoGame() {
         clearInterval(rollIntervalRef.current);
         setGameState(data);
         setIsRolling(false);
+
+        // Special bonus audio trigger on rolling 6
+        if (data?.diceNumber === 6) {
+          playBonusSixSound();
+        }
       }, 450);
     } catch (err) {
       clearInterval(rollIntervalRef.current);
@@ -144,9 +157,10 @@ export default function LudoGame() {
     }
   };
 
-  // Step-by-step box hopping animation
+  // Step-by-step box hopping animation with step sound
   const animateStepByStep = (color, tokenId, fromPos, toPos, onFinish) => {
     if (fromPos === -1) {
+      playTileSlideSound();
       setDisplayTokens((prev) => {
         const copy = JSON.parse(JSON.stringify(prev));
         copy[color][tokenId] = 0;
@@ -159,6 +173,7 @@ export default function LudoGame() {
     let current = fromPos;
     const interval = setInterval(() => {
       current++;
+      playTileSlideSound();
       setDisplayTokens((prev) => {
         const copy = JSON.parse(JSON.stringify(prev));
         copy[color][tokenId] = current;
@@ -190,6 +205,11 @@ export default function LudoGame() {
         setDisplayTokens(data.tokens);
         setGameState(data);
         setIsMoving(false);
+
+        // Match Completed Fanfare
+        if (data?.gameOver) {
+          playWinSound();
+        }
       });
     } catch (err) {
       setError(err.message);
@@ -421,7 +441,7 @@ export default function LudoGame() {
           {error && <div className="setup-error-msg">⚠️ {error}</div>}
 
           <button className="setup-start-btn" onClick={startGame} disabled={loading}>
-            {loading ? "Starting..." : "PLAY NOW"}
+            {loading ? "Starting" : "PLAY NOW"}
           </button>
         </div>
       </div>
@@ -510,14 +530,13 @@ export default function LudoGame() {
           </div>
         </div>
 
-        {/* Center Triangular Victory Island with Friend's Cascade Line Rows */}
+        {/* Center Triangular Victory Island */}
         <div className="center-cross-goal">
           <div className="tri-zone zone-red"></div>
           <div className="tri-zone zone-green"></div>
           <div className="tri-zone zone-yellow"></div>
           <div className="tri-zone zone-blue"></div>
 
-          {/* Clean line arrays per triangle */}
           {renderHomeFinishedTokens("red")}
           {renderHomeFinishedTokens("green")}
           {renderHomeFinishedTokens("yellow")}
@@ -580,9 +599,7 @@ export default function LudoGame() {
         </button>
       </div>
 
-      {/* ========================================================
-          SIMPLIFIED VICTORY SCOREBOARD MODAL (Medal + Name + Win/Lose)
-         ======================================================== */}
+      {/* Simplified Victory Scoreboard Modal */}
       {gameState?.gameOver && (
         <div className="ludo-podium-overlay">
           <div className="ludo-podium-card">
@@ -592,17 +609,12 @@ export default function LudoGame() {
             <div className="podium-ranks-list">
               {getRankedPlayerList().map(({ color, name, rank }) => (
                 <div key={color} className="podium-rank-row">
-                  {/* Left: Medal Icon only */}
                   <div className="rank-medal-col">
                     <span className="medal-ico">{RANK_DATA[rank]?.icon}</span>
                   </div>
-
-                  {/* Center: Player Name */}
                   <div className="rank-name-col">
                     <strong className="player-display-name">{name}</strong>
                   </div>
-
-                  {/* Right: WIN / LOSE Status badge */}
                   <div className="rank-status-col">
                     <span className={`status-pill ${RANK_DATA[rank]?.badgeClass}`}>
                       {RANK_DATA[rank]?.status}
