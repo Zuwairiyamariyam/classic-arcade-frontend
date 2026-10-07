@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./TicTacToeGame.css";
 
-const API_BASE_URL = `http://${window.location.hostname || "192.168.29.229"}:8080/api/tictactoe`;
+const API_BASE_URL = "https://classic-arcade-backend.onrender.com/api/tictactoe";
 
 function TicTacToeGame() {
     const [gameMode, setGameMode] = useState(null);

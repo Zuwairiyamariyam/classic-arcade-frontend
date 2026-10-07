@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import "./LudoGame.css";
 
-const API_URL = "http://192.168.29.229:8080/api/ludo";
+const API_URL = "https://classic-arcade-backend.onrender.com/api/ludo";
 
 const PLAYER_ORDER = ["red", "green", "yellow", "blue"];
 

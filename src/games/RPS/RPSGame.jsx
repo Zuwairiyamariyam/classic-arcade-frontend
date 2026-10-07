@@ -24,7 +24,7 @@ function RPSGame() {
         setLastPlayerChoice(choice);
 
         try {
-            const response = await fetch("http://192.168.29.229:8080/api/rps/play", {
+            const response = await fetch("https://classic-arcade-backend.onrender.com/api/rps/play", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
