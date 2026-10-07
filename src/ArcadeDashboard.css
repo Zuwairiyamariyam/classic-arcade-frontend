@@ -15,9 +15,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 28px;
-  padding: 24px;
+  justify-content: center; /* Screen lo vertically perfect center */
+  gap: 24px;               /* Header, cards mariyu footer madhya clean unified gap */
+  padding: 20px;
   box-sizing: border-box;
   position: relative;
   overflow: hidden !important;
@@ -74,7 +74,7 @@
 .arcade-horizontal-list {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 16px;
   max-width: 700px;
   width: 100%;
   z-index: 2;
@@ -251,38 +251,50 @@
   background: #000;
 }
 
-/* Mobile responsive (Small and Compact Phones) */
+/* =========================================================
+   MOBILE RESPONSIVE (Tall, Medium & Small Screens)
+========================================================= */
 @media (max-width: 550px) {
   .arcade-viewport {
-    gap: 16px;
-    padding: 14px 12px;
-    justify-content: space-evenly;
+    justify-content: center !important; /* Space-evenly theesesi center chesam */
+    gap: 22px !important;              /* Header, cards, footer close and balanced */
+    padding: 16px 14px;
+  }
+  .arcade-header {
+    margin-bottom: 4px;
+  }
+  .arcade-title {
+    font-size: 24px;
   }
   .arcade-horizontal-list {
-    gap: 10px;
+    gap: 12px;
     width: 100%;
   }
   .arcade-horizontal-card {
-    padding: 10px 14px;
+    padding: 11px 16px;
     border-radius: 14px;
   }
   .card-left-group {
-    gap: 10px;
+    gap: 12px;
   }
   .game-logo-badge {
-    width: 38px;
-    height: 38px;
-    font-size: 18px;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
     border-radius: 10px;
   }
   .game-heading {
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 700;
   }
   .play-btn-pill {
-    padding: 6px 12px;
-    font-size: 11px;
+    padding: 7px 14px;
+    font-size: 12px;
     letter-spacing: 0;
+  }
+  .arcade-footer {
+    font-size: 12px;
+    margin-top: 4px; /* Cards ki daggaraga elegant ga untundi */
   }
   .game-modal-header {
     height: 46px;
