@@ -2,681 +2,697 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap');
 
 .sliding-puzzle-container {
-    width: 100%;
-    min-height: calc(100vh - 55px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    background-color: #060b14;
-    background-image: 
-        radial-gradient(ellipse 70% 60% at 50% 50%, rgba(12, 53, 94, 0.45) 0%, rgba(4, 7, 14, 0.95) 85%),
-        linear-gradient(135deg, rgba(20, 40, 70, 0.22) 25%, transparent 25%),
-        linear-gradient(225deg, rgba(20, 40, 70, 0.22) 25%, transparent 25%),
-        linear-gradient(45deg, rgba(14, 30, 56, 0.28) 25%, transparent 25%),
-        linear-gradient(315deg, rgba(14, 30, 56, 0.28) 25%, #050812 25%);
-    background-position: center, 10px 0, 10px 0, 0 0, 0 0;
-    background-size: 100% 100%, 20px 20px, 20px 20px, 20px 20px, 20px 20px;
-    color: #f8fafc;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    box-sizing: border-box;
+  width: 100%;
+  min-height: calc(100vh - 55px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  background-color: #060b14;
+  background-image: 
+    radial-gradient(ellipse 70% 60% at 50% 50%, rgba(12, 53, 94, 0.45) 0%, rgba(4, 7, 14, 0.95) 85%),
+    linear-gradient(135deg, rgba(20, 40, 70, 0.22) 25%, transparent 25%),
+    linear-gradient(225deg, rgba(20, 40, 70, 0.22) 25%, transparent 25%),
+    linear-gradient(45deg, rgba(14, 30, 56, 0.28) 25%, transparent 25%),
+    linear-gradient(315deg, rgba(14, 30, 56, 0.28) 25%, #050812 25%);
+  background-position: center, 10px 0, 10px 0, 0 0, 0 0;
+  background-size: 100% 100%, 20px 20px, 20px 20px, 20px 20px, 20px 20px;
+  color: #f8fafc;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  box-sizing: border-box;
 }
 
 .arcade-panel {
-    position: relative;
-    background: rgba(11, 17, 30, 0.94);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 2px solid #ff7b00;
-    border-radius: 24px;
-    box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.9),
-                0 0 25px rgba(255, 123, 0, 0.22),
-                inset 0 0 15px rgba(255, 123, 0, 0.05);
-    box-sizing: border-box;
+  position: relative;
+  background: rgba(11, 17, 30, 0.94);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 2px solid #ff7b00;
+  border-radius: 24px;
+  box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.9),
+              0 0 25px rgba(255, 123, 0, 0.22),
+              inset 0 0 15px rgba(255, 123, 0, 0.05);
+  box-sizing: border-box;
 }
 
 /* 1. MODE SELECTION SCREEN */
 .puzzle-mode-selection {
-    width: min(94vw, 560px);
-    padding: 44px 38px;
-    text-align: center;
+  width: min(94vw, 560px);
+  padding: 44px 38px;
+  text-align: center;
 }
 
 .puzzle-title {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 38px;
-    font-weight: 700;
-    margin: 0;
-    color: #ffffff;
-    letter-spacing: -0.5px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 38px;
+  font-weight: 700;
+  margin: 0;
+  color: #ffffff;
+  letter-spacing: -0.5px;
 }
 
 .puzzle-subtitle {
-    color: #94a3b8;
-    font-size: 15px;
-    margin: 10px 0 32px;
+  color: #94a3b8;
+  font-size: 15px;
+  margin: 10px 0 32px;
 }
 
 .mode-btn-container {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .puzzle-mode-button {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    padding: 22px 24px;
-    border-radius: 20px;
-    background: #131c30;
-    border: 1px solid rgba(255, 255, 255, 0.07);
-    cursor: pointer;
-    box-sizing: border-box;
-    transition: background 0.2s ease, border-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 22px 24px;
+  border-radius: 20px;
+  background: #131c30;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: background 0.2s ease, border-color 0.2s ease;
 }
 
 .puzzle-mode-button:hover {
-    background: #1a2540;
-    border-color: #ff8800;
+  background: #1a2540;
+  border-color: #ff8800;
 }
 
 .mode-btn-content {
-    display: flex;
-    align-items: center;
-    gap: 18px;
-    text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  text-align: left;
 }
 
 .mode-icon {
-    font-size: 32px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  font-size: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .mode-name {
-    display: block;
-    font-size: 18px;
-    font-weight: 700;
-    color: #ffffff;
+  display: block;
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffffff;
 }
 
 .mode-desc {
-    display: block;
-    font-size: 13px;
-    color: #94a3b8;
-    margin-top: 4px;
+  display: block;
+  font-size: 13px;
+  color: #94a3b8;
+  margin-top: 4px;
 }
 
 .desc-desktop {
-    display: block;
+  display: block;
 }
 .desc-mobile {
-    display: none;
+  display: none;
 }
 
 .mode-arrow {
-    font-size: 22px;
-    color: #64748b;
-    font-weight: bold;
+  font-size: 22px;
+  color: #64748b;
+  font-weight: bold;
 }
 
 .puzzle-mode-button:hover .mode-arrow {
-    color: #ff9d42;
+  color: #ff9d42;
 }
 
 /* ========================================================
    TOP HEADER ROW (TAG LEFT + TIMER RIGHT)
    ======================================================== */
 .puzzle-top-header-row {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
 }
 
 .mode-pill-indicator {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0.8px;
-    color: #ff9d42;
-    background: rgba(255, 123, 0, 0.12);
-    padding: 8px 16px;
-    border-radius: 10px;
-    border: 1px solid rgba(255, 123, 0, 0.35);
-    display: inline-flex;
-    align-items: center;
-    height: 38px;
-    box-sizing: border-box;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  color: #ff9d42;
+  background: rgba(255, 123, 0, 0.12);
+  padding: 8px 16px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 123, 0, 0.35);
+  display: inline-flex;
+  align-items: center;
+  height: 38px;
+  box-sizing: border-box;
+  white-space: nowrap;
 }
 
 .header-timer-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    height: 38px;
-    padding: 8px 16px;
-    border-radius: 10px;
-    background: #141c2f;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 38px;
+  padding: 8px 16px;
+  border-radius: 10px;
+  background: #141c2f;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-sizing: border-box;
+  white-space: nowrap;
 }
 
 .header-timer-pill .timer-icon {
-    font-size: 15px;
+  font-size: 15px;
 }
 
 .header-timer-pill .timer-text {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 16px;
-    font-weight: 700;
-    color: #ffffff;
-    letter-spacing: 0.5px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.5px;
 }
 
 /* ========================================================
    NUMBER MODE (SINGLE LAYOUT)
    ======================================================== */
 .single-layout {
-    width: min(94vw, 440px);
-    padding: 24px 26px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  width: min(94vw, 440px);
+  padding: 24px 26px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .single-layout .puzzle-top-header-row {
-    width: min(100%, 370px);
+  width: min(100%, 360px);
 }
 
 .single-layout .puzzle-content-wrapper {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .single-layout .sliding-puzzle-board {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
-    width: min(100%, 370px);
-    aspect-ratio: 1 / 1;
-    padding: 10px;
-    border-radius: 18px;
-    background: #090e1a;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: inset 0 3px 10px rgba(0, 0, 0, 0.8);
-    box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  width: min(100%, 360px);
+  aspect-ratio: 1 / 1;
+  padding: 10px;
+  border-radius: 18px;
+  background: #090e1a;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 3px 10px rgba(0, 0, 0, 0.8);
+  box-sizing: border-box;
 }
 
 .single-layout .puzzle-tile {
-    width: 100%;
-    height: 100%;
-    border: none;
-    border-radius: 12px;
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 30px;
-    font-weight: 700;
-    color: #ffffff;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    user-select: none;
-    outline: none;
-    transform: none !important;
-    transition: background-color 0.15s ease, filter 0.15s ease;
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 12px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #ffffff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  outline: none;
+  transform: none !important;
+  transition: background-color 0.15s ease, filter 0.15s ease;
 }
 
 .single-layout .number-tile {
-    background: #1d3369;
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  background: #1d3369;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
 
 .single-layout .number-tile:not(:disabled):hover {
-    background: #254287;
-    filter: brightness(1.1);
+  background: #254287;
+  filter: brightness(1.1);
 }
 
 /* ========================================================
    IMAGE MODE (SPLIT LAYOUT - DESKTOP)
    ======================================================== */
 .split-layout {
-    width: min(96vw, 980px);
-    padding: 36px 42px;
+  width: min(96vw, 980px);
+  padding: 36px 42px;
 }
 
 .split-layout .puzzle-content-wrapper {
-    display: grid;
-    grid-template-columns: 300px 1fr;
-    gap: 40px;
-    align-items: center;
-    width: 100%;
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 40px;
+  align-items: center;
+  width: 100%;
 }
 
 .mosaic-side-hud {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .mosaic-desktop-timer-card {
-    display: none; /* Header row-la timer irukkuradhaala clean-aa single timer */
+  display: none;
 }
 
 .puzzle-preview-box {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .preview-label {
-    font-size: 12px;
-    font-weight: 800;
-    color: #94a3b8;
-    letter-spacing: 1px;
-    margin-bottom: 10px;
+  font-size: 12px;
+  font-weight: 800;
+  color: #94a3b8;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
 }
 
 .preview-frame {
-    width: 170px;
-    height: 170px;
-    padding: 4px;
-    border-radius: 18px;
-    background: linear-gradient(135deg, #ff7b00 0%, #2563eb 100%);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+  width: 170px;
+  height: 170px;
+  padding: 4px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #ff7b00 0%, #2563eb 100%);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
 }
 
 .preview-frame img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 14px;
-    display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 14px;
+  display: block;
 }
 
 .split-layout .sliding-puzzle-board {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    width: min(100%, 460px);
-    aspect-ratio: 1 / 1;
-    padding: 12px;
-    border-radius: 24px;
-    background: #090e1a;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: inset 0 4px 15px rgba(0, 0, 0, 0.8);
-    box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  width: min(100%, 460px);
+  aspect-ratio: 1 / 1;
+  padding: 12px;
+  border-radius: 24px;
+  background: #090e1a;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 4px 15px rgba(0, 0, 0, 0.8);
+  box-sizing: border-box;
 }
 
 .split-layout .puzzle-tile {
-    width: 100%;
-    height: 100%;
-    border: none;
-    border-radius: 16px;
-    cursor: pointer;
-    user-select: none;
-    outline: none;
-    transform: none !important;
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+  user-select: none;
+  outline: none;
+  transform: none !important;
 }
 
 .image-tile {
-    background-size: 300% 300%;
-    background-repeat: no-repeat;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+  background-size: 300% 300%;
+  background-repeat: no-repeat;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .image-tile:not(:disabled):hover {
-    filter: brightness(1.12);
+  filter: brightness(1.12);
 }
 
 /* Controls */
 .single-layout .puzzle-bottom-controls {
-    display: flex;
-    gap: 14px;
-    width: min(100%, 370px);
-    margin-top: 18px;
+  display: flex;
+  gap: 14px;
+  width: min(100%, 360px);
+  margin-top: 16px;
 }
 
 .split-layout .puzzle-bottom-controls {
-    display: flex;
-    gap: 14px;
-    width: 100%;
-    margin-top: 6px;
+  display: flex;
+  gap: 14px;
+  width: 100%;
+  margin-top: 6px;
 }
 
 .arcade-control-pill {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    padding: 12px 18px;
-    border-radius: 14px;
-    background: rgba(22, 30, 49, 0.85);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.08),
-                0 4px 12px rgba(0, 0, 0, 0.4);
-    color: #e2e8f0;
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 14px;
-    font-weight: 700;
-    cursor: pointer;
-    user-select: none;
-    outline: none;
-    transform: none !important;
-    transition: all 0.25s ease;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 18px;
+  border-radius: 14px;
+  background: rgba(22, 30, 49, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.08),
+              0 4px 12px rgba(0, 0, 0, 0.4);
+  color: #e2e8f0;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  user-select: none;
+  outline: none;
+  transform: none !important;
+  transition: all 0.25s ease;
+  white-space: nowrap;
 }
 
 .arcade-control-pill .pill-icon {
-    font-size: 15px;
-    color: #cbd5e1;
-    font-weight: normal;
-    transition: color 0.25s ease;
+  font-size: 15px;
+  color: #cbd5e1;
+  font-weight: normal;
+  transition: color 0.25s ease;
 }
 
 .arcade-control-pill:hover {
-    background: rgba(28, 40, 68, 0.95);
-    border-color: #ff7b00;
-    color: #ffffff;
-    box-shadow: 0 0 15px rgba(255, 123, 0, 0.35),
-                inset 0 0 10px rgba(37, 99, 235, 0.2);
+  background: rgba(28, 40, 68, 0.95);
+  border-color: #ff7b00;
+  color: #ffffff;
+  box-shadow: 0 0 15px rgba(255, 123, 0, 0.35),
+              inset 0 0 10px rgba(37, 99, 235, 0.2);
 }
 
 .arcade-control-pill:hover .pill-icon {
-    color: #ff9d42;
+  color: #ff9d42;
 }
 
 .arcade-control-pill:active {
-    background: rgba(18, 25, 42, 0.95);
-    border-color: #ea580c;
-    box-shadow: 0 0 8px rgba(255, 123, 0, 0.25);
+  background: rgba(18, 25, 42, 0.95);
+  border-color: #ea580c;
+  box-shadow: 0 0 8px rgba(255, 123, 0, 0.25);
 }
 
 .puzzle-board-wrapper {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .puzzle-empty {
-    background: rgba(10, 14, 26, 0.6) !important;
-    border: 1.5px dashed rgba(255, 115, 0, 0.25) !important;
-    cursor: default !important;
-    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.8) !important;
+  background: rgba(10, 14, 26, 0.6) !important;
+  border: 1.5px dashed rgba(255, 115, 0, 0.25) !important;
+  cursor: default !important;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.8) !important;
 }
 
 /* Victory Popup Alert Modal */
 .puzzle-modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(4, 7, 14, 0.78);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-    animation: modalBackdropFade 0.25s ease-out;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(4, 7, 14, 0.78);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: modalBackdropFade 0.25s ease-out;
 }
 
 .puzzle-modal-card {
-    background: rgba(11, 17, 30, 0.96);
-    border: 2px solid #ff7b00;
-    border-radius: 24px;
-    padding: 32px 30px;
-    width: min(90vw, 420px);
-    text-align: center;
-    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9),
-                0 0 35px rgba(255, 123, 0, 0.35);
-    animation: modalPopIn 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
-    box-sizing: border-box;
+  background: rgba(11, 17, 30, 0.96);
+  border: 2px solid #ff7b00;
+  border-radius: 24px;
+  padding: 32px 30px;
+  width: min(90vw, 420px);
+  text-align: center;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9),
+              0 0 35px rgba(255, 123, 0, 0.35);
+  animation: modalPopIn 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+  box-sizing: border-box;
 }
 
 @keyframes modalBackdropFade {
-    from { opacity: 0; }
-    to { opacity: 1; }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 @keyframes modalPopIn {
-    from {
-        opacity: 0;
-        transform: scale(0.85) translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1) translateY(0);
-    }
+  from {
+    opacity: 0;
+    transform: scale(0.85) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
 }
 
 .modal-badge {
-    display: inline-block;
-    padding: 4px 14px;
-    border-radius: 999px;
-    background: rgba(255, 123, 0, 0.2);
-    color: #ff9d42;
-    font-size: 11px;
-    font-weight: 800;
-    letter-spacing: 1.5px;
-    margin-bottom: 12px;
+  display: inline-block;
+  padding: 4px 14px;
+  border-radius: 999px;
+  background: rgba(255, 123, 0, 0.2);
+  color: #ff9d42;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  margin-bottom: 12px;
 }
 
 .modal-title {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 26px;
-    font-weight: 700;
-    color: #ffffff;
-    margin: 0 0 10px 0;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 10px 0;
 }
 
 .modal-subtitle {
-    font-size: 14px;
-    color: #94a3b8;
-    line-height: 1.5;
-    margin: 0 0 26px 0;
+  font-size: 14px;
+  color: #94a3b8;
+  line-height: 1.5;
+  margin: 0 0 26px 0;
 }
 
 .modal-subtitle .highlight {
-    color: #ff9d42;
-    font-weight: 700;
+  color: #ff9d42;
+  font-weight: 700;
 }
 
 .modal-actions {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .modal-btn {
-    width: 100%;
-    padding: 13px 18px;
-    border-radius: 14px;
-    font-family: inherit;
-    font-size: 14px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    border: none;
-    outline: none;
+  width: 100%;
+  padding: 13px 18px;
+  border-radius: 14px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  outline: none;
 }
 
 .next-btn {
-    background: #ff7b00;
-    color: #ffffff;
-    box-shadow: 0 6px 20px rgba(255, 123, 0, 0.35);
+  background: #ff7b00;
+  color: #ffffff;
+  box-shadow: 0 6px 20px rgba(255, 123, 0, 0.35);
 }
 
 .next-btn:hover {
-    background: #ea580c;
-    box-shadow: 0 8px 24px rgba(255, 123, 0, 0.5);
+  background: #ea580c;
+  box-shadow: 0 8px 24px rgba(255, 123, 0, 0.5);
 }
 
 .exit-btn {
-    background: #172138;
-    color: #cbd5e1;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #172138;
+  color: #cbd5e1;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .exit-btn:hover {
-    background: #202d4d;
-    color: #ffffff;
+  background: #202d4d;
+  color: #ffffff;
 }
 
 /* ==========================================================================
    EXCLUSIVE MOBILE RESPONSIVE TWEAKS (STRICTLY <= 600px)
    ========================================================================== */
 @media (max-width: 600px) {
-    /* 1. SELECTION SCREEN */
-    .puzzle-mode-selection {
-        padding: 28px 18px !important;
-        border-radius: 20px !important;
-        width: 92vw !important;
-    }
+  .sliding-puzzle-container {
+    padding: 10px 8px !important;
+  }
+  
+  /* 1. SELECTION SCREEN */
+  .puzzle-mode-selection {
+    padding: 24px 16px !important;
+    border-radius: 20px !important;
+    width: min(92vw, 360px) !important;
+  }
 
-    .puzzle-title {
-        font-size: 26px !important;
-    }
+  .puzzle-title {
+    font-size: 24px !important;
+  }
 
-    .puzzle-subtitle {
-        font-size: 13px !important;
-        margin: 6px 0 22px !important;
-    }
+  .puzzle-subtitle {
+    font-size: 13px !important;
+    margin: 6px 0 20px !important;
+  }
 
-    .puzzle-mode-button {
-        padding: 14px 16px !important;
-        border-radius: 16px !important;
-    }
+  .puzzle-mode-button {
+    padding: 12px 14px !important;
+    border-radius: 14px !important;
+  }
 
-    .mode-btn-content {
-        gap: 12px !important;
-    }
+  .mode-btn-content {
+    gap: 10px !important;
+  }
 
-    .mode-icon {
-        font-size: 26px !important;
-    }
+  .mode-icon {
+    font-size: 24px !important;
+  }
 
-    .mode-name {
-        font-size: 16px !important;
-    }
+  .mode-name {
+    font-size: 15px !important;
+  }
 
-    .desc-desktop {
-        display: none !important;
-    }
-    .desc-mobile {
-        display: block !important;
-        font-size: 12px !important;
-        color: #94a3b8 !important;
-        white-space: nowrap !important;
-    }
+  .desc-desktop {
+    display: none !important;
+  }
+  .desc-mobile {
+    display: block !important;
+    font-size: 11px !important;
+    color: #94a3b8 !important;
+    white-space: nowrap !important;
+  }
 
-    .mode-arrow {
-        font-size: 18px !important;
-    }
+  .mode-arrow {
+    font-size: 16px !important;
+  }
 
-    /* 2. PICTURE MOSAIC MOBILE SCREEN */
-    .split-layout {
-        padding: 18px 14px 14px !important;
-        border-radius: 20px !important;
-        width: 94vw !important;
-    }
+  /* 2. GAME AREA (NUMBER & PICTURE MOSAIC) */
+  .single-layout,
+  .split-layout {
+    padding: 14px 12px !important;
+    border-radius: 20px !important;
+    width: min(94vw, 360px) !important;
+  }
 
-    /* TOP ROW: Tag Left + Timer Right */
-    .split-layout .puzzle-top-header-row {
-        width: min(88vw, 340px) !important;
-        margin: 0 auto 12px !important;
-        display: flex !important;
-        justify-content: space-between !important;
-        align-items: center !important;
-    }
+  /* TOP ROW: Tag Left + Timer Right */
+  .puzzle-top-header-row,
+  .split-layout .puzzle-top-header-row,
+  .single-layout .puzzle-top-header-row {
+    width: 100% !important;
+    margin-bottom: 10px !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+  }
 
-    .split-layout .mode-pill-indicator {
-        font-size: 11px !important;
-        padding: 6px 12px !important;
-        height: 34px !important;
-    }
+  .mode-pill-indicator,
+  .split-layout .mode-pill-indicator {
+    font-size: 11px !important;
+    padding: 4px 10px !important;
+    height: 32px !important;
+  }
 
-    .split-layout .header-timer-pill {
-        height: 34px !important;
-        padding: 6px 12px !important;
-        font-size: 14px !important;
-    }
+  .header-timer-pill,
+  .split-layout .header-timer-pill {
+    height: 32px !important;
+    padding: 4px 10px !important;
+    font-size: 13px !important;
+  }
 
-    .split-layout .puzzle-content-wrapper {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 10px !important;
-        align-items: center !important;
-    }
+  .split-layout .puzzle-content-wrapper {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+    align-items: center !important;
+    width: 100% !important;
+  }
 
-    .mosaic-side-hud {
-        width: min(88vw, 340px) !important;
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        gap: 8px !important;
-    }
+  .mosaic-side-hud {
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 6px !important;
+  }
 
-    /* Target reference - CENTER ALIGNED BELOW HEADER */
-    .puzzle-preview-box {
-        align-items: center !important;
-        width: 100% !important;
-    }
+  /* Target reference - CENTER ALIGNED BELOW HEADER */
+  .puzzle-preview-box {
+    align-items: center !important;
+    width: 100% !important;
+  }
 
-    .preview-label {
-        font-size: 10px !important;
-        letter-spacing: 0.8px !important;
-        margin-bottom: 6px !important;
-        color: #94a3b8 !important;
-    }
+  .preview-label {
+    font-size: 10px !important;
+    letter-spacing: 0.8px !important;
+    margin-bottom: 4px !important;
+    color: #94a3b8 !important;
+  }
 
-    .preview-frame {
-        width: 110px !important;
-        height: 110px !important;
-        border-radius: 14px !important;
-        padding: 3px !important;
-        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5) !important;
-    }
+  .preview-frame {
+    width: 95px !important;
+    height: 95px !important;
+    border-radius: 12px !important;
+    padding: 2px !important;
+  }
 
-    .preview-frame img {
-        border-radius: 11px !important;
-    }
+  .preview-frame img {
+    border-radius: 10px !important;
+  }
 
-    /* Board Sizing */
-    .split-layout .sliding-puzzle-board,
-    .single-layout .sliding-puzzle-board {
-        width: min(88vw, 340px) !important;
-        height: min(88vw, 340px) !important;
-        gap: 6px !important;
-        padding: 8px !important;
-        border-radius: 18px !important;
-    }
+  /* Board Sizing (Strictly square, fits narrow phone without scroll) */
+  .split-layout .sliding-puzzle-board,
+  .single-layout .sliding-puzzle-board {
+    width: min(84vw, 310px) !important;
+    height: min(84vw, 310px) !important;
+    gap: 6px !important;
+    padding: 6px !important;
+    border-radius: 14px !important;
+  }
 
-    .split-layout .puzzle-tile,
-    .single-layout .puzzle-tile {
-        border-radius: 10px !important;
-    }
+  .single-layout .puzzle-tile {
+    font-size: 22px !important;
+    border-radius: 8px !important;
+  }
 
-    /* Bottom Control Action Pills */
-    .split-layout .puzzle-bottom-controls,
-    .single-layout .puzzle-bottom-controls {
-        width: min(88vw, 340px) !important;
-        gap: 10px !important;
-        margin-top: 6px !important;
-    }
+  .split-layout .puzzle-tile {
+    border-radius: 8px !important;
+  }
 
-    .arcade-control-pill {
-        padding: 10px 14px !important;
-        font-size: 12.5px !important;
-        border-radius: 10px !important;
-    }
+  /* Bottom Control Action Pills */
+  .split-layout .puzzle-bottom-controls,
+  .single-layout .puzzle-bottom-controls {
+    width: min(84vw, 310px) !important;
+    gap: 8px !important;
+    margin-top: 8px !important;
+  }
+
+  .arcade-control-pill {
+    padding: 8px 12px !important;
+    font-size: 12px !important;
+    border-radius: 10px !important;
+  }
 }
