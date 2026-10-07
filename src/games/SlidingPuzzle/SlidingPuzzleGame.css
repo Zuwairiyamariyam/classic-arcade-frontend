@@ -256,7 +256,7 @@
 
 .split-layout .puzzle-content-wrapper {
   display: grid;
-  grid-template-columns: 340px 1fr; /* Increased left column to balance space */
+  grid-template-columns: 340px 1fr;
   gap: 48px;
   align-items: center;
   width: 100%;
@@ -283,12 +283,12 @@
   font-weight: 800;
   color: #94a3b8;
   letter-spacing: 1.2px;
-  margin-top: -33px; 
+  margin-top: -33px; /* Laptop View: Stays exactly as you liked */
   margin-bottom: 12px;
 }
 
 .preview-frame {
-  width: 260px;  /* Enlarged target image for laptop view */
+  width: 260px;  /* Laptop View: Big size */
   height: 260px;
   padding: 5px;
   border-radius: 22px;
@@ -351,7 +351,7 @@
 .split-layout .puzzle-bottom-controls {
   display: flex;
   gap: 14px;
-  width: 260px; /* Aligned with 260px preview frame */
+  width: 260px;
   margin-top: 8px;
 }
 
@@ -538,7 +538,7 @@
 }
 
 /* ==========================================================================
-   EXCLUSIVE MOBILE RESPONSIVE TWEAKS (STRICTLY <= 600px - UNTOUCHED)
+   EXCLUSIVE MOBILE RESPONSIVE FIXES (STRICTLY <= 600px ONLY)
    ========================================================================== */
 @media (max-width: 600px) {
   .sliding-puzzle-container {
@@ -598,11 +598,12 @@
     width: min(94vw, 360px) !important;
   }
 
+  /* TOP ROW: Tag Left + Timer Right */
   .puzzle-top-header-row,
   .split-layout .puzzle-top-header-row,
   .single-layout .puzzle-top-header-row {
     width: 100% !important;
-    margin-bottom: 10px !important;
+    margin-bottom: 12px !important;
     display: flex !important;
     justify-content: space-between !important;
     align-items: center !important;
@@ -625,7 +626,7 @@
   .split-layout .puzzle-content-wrapper {
     display: flex !important;
     flex-direction: column !important;
-    gap: 8px !important;
+    gap: 10px !important;
     align-items: center !important;
     width: 100% !important;
   }
@@ -635,7 +636,7 @@
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
-    gap: 6px !important;
+    gap: 8px !important;
   }
 
   .puzzle-preview-box {
@@ -643,24 +644,31 @@
     width: 100% !important;
   }
 
-  .preview-label {
-    font-size: 10px !important;
+  /* 👉 OVERLAP FIX: Margin-top 0 aakiyirukkom, text header kulla pogaadhu */
+  .preview-label,
+  .split-layout .preview-label {
+    font-size: 11px !important;
     letter-spacing: 0.8px !important;
-    margin-bottom: 4px !important;
+    margin-top: 0px !important;
+    margin-bottom: 6px !important;
     color: #94a3b8 !important;
+    text-align: center !important;
   }
 
-  .preview-frame {
-    width: 95px !important;
-    height: 95px !important;
-    border-radius: 12px !important;
-    padding: 2px !important;
+  .preview-frame,
+  .split-layout .preview-frame {
+    width: 100px !important;
+    height: 100px !important;
+    border-radius: 14px !important;
+    padding: 3px !important;
   }
 
-  .preview-frame img {
-    border-radius: 10px !important;
+  .preview-frame img,
+  .split-layout .preview-frame img {
+    border-radius: 11px !important;
   }
 
+  /* Board Sizing (Square & proportional) */
   .split-layout .sliding-puzzle-board,
   .single-layout .sliding-puzzle-board {
     width: min(84vw, 310px) !important;
@@ -679,6 +687,7 @@
     border-radius: 8px !important;
   }
 
+  /* Bottom Control Action Pills */
   .split-layout .puzzle-bottom-controls,
   .single-layout .puzzle-bottom-controls {
     width: min(84vw, 310px) !important;
