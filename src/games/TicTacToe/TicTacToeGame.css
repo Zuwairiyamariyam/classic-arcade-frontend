@@ -273,7 +273,7 @@
     font-weight: 800;
     color: #94a3b8;
     letter-spacing: 0.5px;
-    white-space: nowrap !important; /* Single line lo undadaniki */
+    white-space: nowrap !important; 
 }
 
 .choice-neon-x:hover .glyph-label {
@@ -620,7 +620,6 @@
         font-size: 22px !important;
     }
 
-    /* CHOOSE YOUR SIDE - Text wrap avvakunda single line lo fit cheyadam */
     .ttt-symbol-choices {
         gap: 16px !important;
         width: 100% !important;

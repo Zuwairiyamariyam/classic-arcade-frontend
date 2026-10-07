@@ -206,7 +206,7 @@ export default function LudoGame() {
         setGameState(data);
         setIsMoving(false);
 
-        // Match Completed Fanfare
+        // Match Completed 
         if (data?.gameOver) {
           playWinSound();
         }
@@ -291,7 +291,7 @@ export default function LudoGame() {
     return null;
   };
 
-  // Friend's Reference concept: Linear line row along the triangle base
+
   const renderHomeFinishedTokens = (color) => {
     const finishedCoins = [];
     tokens[color]?.forEach((pos, tokenId) => {
@@ -387,7 +387,7 @@ export default function LudoGame() {
     );
   };
 
-  // Rank Leaderboard Builder (1st, 2nd, 3rd, 4th)
+  // Rank Leaderboard 
   const getRankedPlayerList = () => {
     const list = [];
     PLAYER_ORDER.forEach((color) => {
@@ -441,7 +441,7 @@ export default function LudoGame() {
           {error && <div className="setup-error-msg">⚠️ {error}</div>}
 
           <button className="setup-start-btn" onClick={startGame} disabled={loading}>
-            {loading ? "Starting" : "PLAY NOW"}
+            {loading ? "Starting..." : "PLAY NOW"}
           </button>
         </div>
       </div>

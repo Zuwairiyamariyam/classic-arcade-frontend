@@ -15,8 +15,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center; /* Screen lo vertically perfect center */
-  gap: 24px;               /* Header, cards mariyu footer madhya clean unified gap */
+  justify-content: center; 
+  gap: 24px;               
   padding: 20px;
   box-sizing: border-box;
   position: relative;
@@ -256,7 +256,7 @@
 ========================================================= */
 @media (max-width: 550px) {
   .arcade-viewport {
-    justify-content: center !important; /* Space-evenly theesesi center chesam */
+    justify-content: center !important; 
     gap: 22px !important;              /* Header, cards, footer close and balanced */
     padding: 16px 14px;
   }
@@ -294,7 +294,7 @@
   }
   .arcade-footer {
     font-size: 12px;
-    margin-top: 4px; /* Cards ki daggaraga elegant ga untundi */
+    margin-top: 4px; 
   }
   .game-modal-header {
     height: 46px;
