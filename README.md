@@ -1,4 +1,4 @@
-# 🕹️ Classic Arcade Game Platform (Frontend)
+# 🕹️ Classic Arcade Game Platform
 
 An interactive, responsive full-stack retro gaming hub built with **React.js** and communicating with a **Spring Boot REST API** backend.
 
