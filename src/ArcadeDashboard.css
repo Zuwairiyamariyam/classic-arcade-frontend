@@ -267,7 +267,7 @@
 @media (max-width: 550px) {
   .arcade-viewport {
     gap: 12px !important;
-    padding: 10px 10px !important; /* side space reduce panni text-ku full space tharom */
+    padding: 10px 10px !important; 
     height: 100dvh;
     max-height: 100dvh;
     overflow: hidden !important;
@@ -276,12 +276,12 @@
   .arcade-header {
     margin-top: -8px !important;
     margin-bottom: 0px !important;
-    transform: translateY(-4px) !important; /* Mela shift aagum */
+    transform: translateY(-4px) !important; 
     width: 100% !important;
     padding: 0 4px !important;
   }
   
-  /* Nalla periya bold single-line title */
+  
   .arcade-title {
     font-size: clamp(19px, 5.6vw, 24px) !important;
     font-weight: 900 !important;
@@ -337,7 +337,7 @@
     font-size: 10.5px !important;
     margin-top: 0px !important;
     margin-bottom: -4px !important;
-    transform: translateY(5px) !important; /* Keezhe shift aagum */
+    transform: translateY(5px) !important; 
   }
   
   .game-modal-header {
@@ -355,7 +355,6 @@
   }
 }
 
-/* Extra Small Devices (< 370px) - Inga kutty aagadha maari perusaave fix panniyachu */
 @media (max-width: 370px) {
   .arcade-title {
     font-size: 18px !important;

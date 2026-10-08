@@ -5,7 +5,6 @@ import { playTileSlideSound, playWinSound } from "../../utils/soundFX";
 
 const SOLVED_BOARD = [1, 2, 3, 4, 5, 6, 7, 8, 0];
 
-// Total 25 Diverse High-Quality Puzzle Images (10 Original + 15 New)
 const IMAGE_OPTIONS = [
   "https://picsum.photos/seed/puzzle-forest/600/600",
   "https://picsum.photos/seed/puzzle-mountains/600/600",

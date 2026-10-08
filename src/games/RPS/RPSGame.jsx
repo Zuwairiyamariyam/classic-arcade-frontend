@@ -21,7 +21,7 @@ function RPSGame() {
   const [tempName, setTempName] = useState("Player");
 
   const playGame = async (choice) => {
-    setLastPlayerChoice(choice); // 👉 Click panna udaney FIRST LINE-laye idhai podunga!
+    setLastPlayerChoice(choice); 
     setLoading(true);
 
     try {
@@ -41,7 +41,7 @@ function RPSGame() {
       } else if (resText.includes("LOSE") || resText.includes("COMPUTER")) {
         playLoseSound(); // Lose sound
       } else {
-        playTieSound(); // Match Draw / Tie sound ikkada add avtundi
+        playTieSound(); 
       }
     } catch (error) {
       console.error("Error:", error);

@@ -120,6 +120,7 @@
   margin: 0;
   background: linear-gradient(135deg, #06b6d4 0%, #ec4899 100%);
   -webkit-background-clip: text;
+  background-clip: text; 
   -webkit-text-fill-color: transparent;
 }
 
@@ -537,6 +538,7 @@
   margin: 0 0 6px;
   background: linear-gradient(135deg, #ffffff 30%, #38bdf8 70%, #ec4899 100%);
   -webkit-background-clip: text;
+  background-clip: text; /* 👈 Idhai add pannunga */
   -webkit-text-fill-color: transparent;
 }
 

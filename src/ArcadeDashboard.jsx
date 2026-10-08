@@ -8,7 +8,6 @@ import SlidingPuzzleGame from "./games/SlidingPuzzle/SlidingPuzzleGame";
 import TicTacToeGame from "./games/TicTacToe/TicTacToeGame";
 import ConnectFourGame from "./games/ConnectFour/ConnectFourGame";
 
-// Recommended Order: Quick Picks ➔ Strategy & Board Anchor
 const GAMES = [
   {
     id: "tictactoe",

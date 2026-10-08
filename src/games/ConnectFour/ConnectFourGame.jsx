@@ -284,7 +284,6 @@ export default function ConnectFourGame() {
     );
   }
 
-  // SCREEN 1.5A: COMPUTER MODE COLOR PICKER
   if (mode === "VS_BOT" && !userColor) {
     return (
       <div className="c4-viewport">
@@ -323,7 +322,6 @@ export default function ConnectFourGame() {
     );
   }
 
-  // SCREEN 1.5B: PASS & PLAY PLAYER NAMES SETUP (ONLY PLACEHOLDERS)
   if (mode === "PASS_PLAY" && !isNamesReady) {
     return (
       <div className="c4-viewport">
