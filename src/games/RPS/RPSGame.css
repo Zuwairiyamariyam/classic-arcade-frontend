@@ -19,7 +19,7 @@
 }
 
 /* ========================================================
-   DARK GREEN GLASSMORPHISM CONTAINER CARD
+   DARK GREEN GLASSMORPHISM CONTAINER CARD (DESKTOP)
    ======================================================== */
 .rps-content-wrapper {
   width: min(94vw, 420px);
@@ -225,7 +225,7 @@
 }
 
 /* ========================================================
-   3 BOTTOM CARDS (COMPLETELY STATIC - NO JUMP/MOVE EFFECT)
+   3 BOTTOM CARDS (COMPLETELY STATIC)
    ======================================================== */
 .rps-choice-row {
   display: grid;
@@ -314,25 +314,92 @@
   color: #ffffff;
 }
 
+/* ========================================================
+   EXCLUSIVE MOBILE FIX (STRICT ZERO-SCROLL LOCK <= 480px)
+   ======================================================== */
 @media (max-width: 480px) {
   .rps-full-screen-container {
-    padding: 10px 8px;
+    padding: 8px 10px !important;
+    height: calc(100dvh - 50px) !important;
+    max-height: calc(100dvh - 50px) !important;
+    overflow: hidden !important;
+    touch-action: none !important;
   }
+
   .rps-content-wrapper {
-    padding: 18px 14px;
-    border-radius: 20px;
+    padding: 14px 14px 12px !important;
+    border-radius: 22px !important;
+    max-height: 96% !important;
+    overflow: hidden !important;
+    width: min(94vw, 360px) !important;
   }
+
+  .rps-zone-box:first-of-type .rps-zone-title {
+    margin-top: 0 !important;
+    margin-bottom: 4px !important;
+    font-size: 13.5px !important;
+  }
+
+  .rps-player-badge {
+    margin-bottom: 4px !important;
+    padding: 2px 10px !important;
+  }
+
+  .rps-player-badge .rps-zone-title {
+    font-size: 13.5px !important;
+  }
+
   .rps-dashed-slot {
-    width: 76px;
-    height: 76px;
+    width: 72px !important;
+    height: 72px !important;
+    border-radius: 14px !important;
   }
+
   .rps-hand-emoji {
-    font-size: 40px;
+    font-size: 38px !important;
   }
+
+  .rps-status-strip {
+    margin: 8px 0 !important;
+  }
+
+  .rps-banner-pill {
+    padding: 6px 12px !important;
+    font-size: 12.5px !important;
+  }
+
+  .rps-score-display {
+    margin: 8px 0 6px !important;
+    font-size: 13px !important;
+  }
+
+  .rps-score-display strong {
+    font-size: 16px !important;
+  }
+
+  .rps-choice-row {
+    gap: 8px !important;
+  }
+
+  .rps-card-btn {
+    padding: 8px 2px 6px !important;
+    border-radius: 12px !important;
+  }
+
   .btn-hand-icon {
-    font-size: 24px;
+    font-size: 24px !important;
   }
+
   .btn-label {
-    font-size: 11px;
+    font-size: 10.5px !important;
+  }
+
+  .rps-footer-action {
+    margin-top: 8px !important;
+  }
+
+  .rps-reset-btn {
+    padding: 5px 14px !important;
+    font-size: 11px !important;
   }
 }

@@ -1,0 +1,788 @@
+/* ConnectFourGame.css */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Space+Grotesk:wght@600;700;800;900&display=swap');
+
+/* ========================================================
+   1. AMBIENT BACKGROUND (FIXED NO-SCROLL VIEWPORT)
+   ======================================================== */
+.c4-viewport {
+  width: 100%;
+  height: calc(100dvh - 50px);
+  max-height: calc(100dvh - 50px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 16px;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+
+  background-color: #070919;
+  background-image: 
+    radial-gradient(circle at 85% 15%, rgba(6, 182, 212, 0.22) 0%, transparent 45%),
+    radial-gradient(circle at 15% 85%, rgba(236, 72, 153, 0.2) 0%, transparent 50%),
+    radial-gradient(circle, rgba(6, 182, 212, 0.14) 2.5px, transparent 3.5px),
+    linear-gradient(45deg, rgba(255, 255, 255, 0.015) 25%, transparent 25%),
+    linear-gradient(-45deg, rgba(255, 255, 255, 0.015) 25%, transparent 25%);
+
+  background-size: 
+    100% 100%, 
+    100% 100%, 
+    40px 40px, 
+    80px 80px, 
+    80px 80px;
+
+  color: #f8fafc;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  touch-action: none;
+}
+
+/* ========================================================
+   2. BALANCED MEDIUM MODE CARD (DESKTOP & LAPTOP VIEW)
+   ======================================================== */
+.c4-mode-card {
+  width: min(92vw, 420px);
+  max-height: 92%;
+  background: rgba(13, 17, 34, 0.94);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1.5px solid rgba(6, 182, 212, 0.4);
+  border-radius: 24px;
+  padding: 24px 22px;
+  text-align: center;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.9),
+              0 0 25px rgba(6, 182, 212, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-sizing: border-box;
+}
+
+/* Inner Display Frame */
+.c4-title-box {
+  background: rgba(18, 24, 48, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  padding: 18px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.c4-sub-badge {
+  font-size: 11px;
+  font-weight: 800;
+  color: #06b6d4;
+  letter-spacing: 1.5px;
+}
+
+.c4-pick-subtitle {
+  font-size: 13px;
+  color: #94a3b8;
+  margin: 0;
+}
+
+/* Medium 4x4 Grid Matrix Emblem */
+.c4-grid-emblem {
+  display: grid;
+  grid-template-columns: repeat(4, 18px);
+  grid-template-rows: repeat(4, 18px);
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+}
+
+.c4-grid-disc {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.disc-dim {
+  background: #cbd5e1;
+  opacity: 0.82;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+.disc-connected {
+  background: linear-gradient(135deg, #06b6d4 0%, #ec4899 100%);
+  box-shadow: 0 0 12px rgba(6, 182, 212, 0.75), 0 0 20px rgba(236, 72, 153, 0.65);
+}
+
+.c4-main-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  margin: 0;
+  background: linear-gradient(135deg, #06b6d4 0%, #ec4899 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Color Picker Grid */
+.c4-color-picker-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  width: 100%;
+}
+
+.color-choice-card {
+  background: #141b34;
+  border: 1.5px solid rgba(255, 255, 255, 0.1);
+  border-radius: 18px;
+  padding: 18px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transform: none !important;
+}
+
+.choice-red:hover {
+  border-color: #ef4444;
+  background: rgba(239, 68, 68, 0.12);
+  box-shadow: 0 8px 20px rgba(239, 68, 68, 0.35);
+}
+
+.choice-yellow:hover {
+  border-color: #eab308;
+  background: rgba(234, 179, 8, 0.12);
+  box-shadow: 0 8px 20px rgba(234, 179, 8, 0.35);
+}
+
+.c4-choice-disc {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  margin-bottom: 2px;
+}
+
+.red-3d-disc {
+  background: radial-gradient(circle at 35% 35%, #ff5252, #b91c1c);
+  box-shadow: 0 4px 12px rgba(185, 28, 28, 0.6);
+}
+
+.yellow-3d-disc {
+  background: radial-gradient(circle at 35% 35%, #fef08a, #eab308);
+  box-shadow: 0 4px 12px rgba(234, 179, 8, 0.6);
+}
+
+.choice-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13px;
+  color: #ffffff;
+}
+
+.choice-turn-tag {
+  font-size: 10px;
+  font-weight: 700;
+  color: #94a3b8;
+  letter-spacing: 0.5px;
+}
+
+/* ========================================================
+   PLAYER NAMES FORM SETUP
+   ======================================================== */
+.c4-names-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.c4-name-input-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #141b34;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 13px 15px;
+  border-radius: 14px;
+  box-sizing: border-box;
+}
+
+.c4-input-disc-indicator {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.c4-name-input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #ffffff;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.c4-name-input::placeholder {
+  color: #94a3b8;
+  opacity: 0.9;
+  font-weight: 600;
+}
+
+.c4-back-link-btn {
+  background: none;
+  border: none;
+  color: #94a3b8;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  margin-top: 2px;
+  padding: 4px 12px;
+  display: inline-block;
+  align-self: center;
+}
+
+.c4-back-link-btn:hover {
+  color: #06b6d4;
+}
+
+/* Mode Buttons */
+.c4-mode-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.c4-mode-pill-btn {
+  width: 100%;
+  padding: 13px 18px;
+  border-radius: 13px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  cursor: pointer;
+  outline: none;
+  box-sizing: border-box;
+  text-transform: uppercase;
+  transform: none !important;
+}
+
+.btn-pink {
+  background: linear-gradient(135deg, #ec4899 0%, #db2777 100%);
+  border: none;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(236, 72, 153, 0.25);
+}
+
+.btn-pink:hover {
+  background: linear-gradient(135deg, #f472b6 0%, #ec4899 100%);
+  box-shadow: 0 4px 14px rgba(236, 72, 153, 0.35);
+}
+
+.btn-dark {
+  background: #141b34;
+  border: 1px solid rgba(6, 182, 212, 0.4);
+  color: #e2e8f0;
+}
+
+.btn-dark:hover {
+  background: #1a2344;
+  border-color: #06b6d4;
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(6, 182, 212, 0.35);
+}
+
+/* ========================================================
+   3. GAME ARENA CONTAINER
+   ======================================================== */
+.c4-game-container {
+  width: min(96vw, 460px);
+  max-height: 96%;
+  background: rgba(13, 17, 34, 0.94);
+  border: 2px solid #06b6d4;
+  border-radius: 22px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.85),
+              0 0 20px rgba(6, 182, 212, 0.25);
+  box-sizing: border-box;
+}
+
+.c4-top-bar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.c4-mode-tag {
+  font-size: 11px;
+  font-weight: 700;
+  color: #06b6d4;
+  background: rgba(6, 182, 212, 0.12);
+  padding: 5px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(6, 182, 212, 0.3);
+  white-space: nowrap;
+}
+
+.c4-turn-pill {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  font-weight: 700;
+  background: #141c2f;
+  padding: 5px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  white-space: nowrap;
+  max-width: 60%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.turn-indicator-disc {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* BOARD STAND */
+.c4-board-stand {
+  width: 100%;
+  background: #0f1c3f;
+  border: 3px solid #0284c7;
+  border-radius: 18px;
+  padding: 8px 8px 10px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.6), inset 0 2px 5px rgba(255, 255, 255, 0.2);
+  box-sizing: border-box;
+}
+
+.c4-col-drop-bar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+  margin-bottom: 6px;
+}
+
+.c4-drop-btn {
+  background: rgba(255, 255, 255, 0.12);
+  border: none;
+  border-radius: 6px;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 800;
+  padding: 4px 0;
+  cursor: pointer;
+  transform: none !important;
+}
+
+.c4-drop-btn:hover:not(:disabled) {
+  background: #ec4899;
+}
+
+.c4-drop-btn:disabled {
+  opacity: 0.2;
+  cursor: not-allowed;
+}
+
+.c4-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  gap: 6px;
+}
+
+.c4-cell-hole {
+  aspect-ratio: 1 / 1;
+  background: #070919;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.85);
+}
+
+.c4-disc {
+  width: 88%;
+  height: 88%;
+  border-radius: 50%;
+}
+
+.disc-empty {
+  background: transparent;
+}
+
+.disc-red {
+  background: radial-gradient(circle at 35% 35%, #ff5252, #b91c1c);
+  box-shadow: inset 0 -3px 6px rgba(0, 0, 0, 0.4), 0 2px 6px rgba(185, 28, 28, 0.6);
+}
+
+.disc-yellow {
+  background: radial-gradient(circle at 35% 35%, #fef08a, #eab308);
+  box-shadow: inset 0 -3px 6px rgba(0, 0, 0, 0.4), 0 2px 6px rgba(234, 179, 8, 0.6);
+}
+
+.disc-win-glow {
+  animation: winPulse 0.6s infinite alternate;
+  border: 2px solid #ffffff;
+}
+
+@keyframes winPulse {
+  0% { transform: scale(0.92); filter: brightness(1); }
+  100% { transform: scale(1.08); filter: brightness(1.4); }
+}
+
+/* Bottom Controls */
+.c4-bottom-controls {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+}
+
+.c4-pill-btn {
+  flex: 1;
+  padding: 9px 12px;
+  border-radius: 11px;
+  background: #141c2f;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #cbd5e1;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transform: none !important;
+}
+
+.c4-pill-btn:hover {
+  background: #1e293b;
+  border-color: #06b6d4;
+  color: #ffffff;
+}
+
+/* ========================================================
+   4. ARCADE VICTORY MODAL CARD
+   ======================================================== */
+.c4-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(4, 7, 18, 0.82);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 16px;
+  animation: modalOverlayFade 0.25s ease-out;
+}
+
+@keyframes modalOverlayFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.c4-victory-card {
+  position: relative;
+  width: min(90vw, 360px);
+  background: linear-gradient(165deg, rgba(17, 24, 48, 0.98) 0%, rgba(10, 14, 30, 0.98) 100%);
+  border: 2px solid #06b6d4;
+  border-radius: 26px;
+  padding: 26px 20px 22px;
+  text-align: center;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.9),
+              0 0 35px rgba(6, 182, 212, 0.35),
+              0 0 50px rgba(236, 72, 153, 0.25);
+  box-sizing: border-box;
+}
+
+.c4-victory-badge-wrap {
+  margin-bottom: 8px;
+}
+
+.c4-victory-badge {
+  display: inline-block;
+  padding: 5px 14px;
+  border-radius: 999px;
+  background: rgba(236, 72, 153, 0.16);
+  border: 1px solid rgba(236, 72, 153, 0.45);
+  color: #f472b6;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.c4-victory-hero-icon {
+  font-size: 44px;
+  margin: 4px 0 8px;
+}
+
+.c4-victory-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  margin: 0 0 6px;
+  background: linear-gradient(135deg, #ffffff 30%, #38bdf8 70%, #ec4899 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.c4-victory-desc {
+  font-size: 12px;
+  color: #94a3b8;
+  line-height: 1.4;
+  margin: 0 0 18px;
+}
+
+.c4-victory-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.c4-modal-btn {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  box-sizing: border-box;
+  transform: none !important;
+  transition: background 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.c4-modal-btn.btn-primary {
+  background: linear-gradient(135deg, #ec4899 0%, #db2777 100%);
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(236, 72, 153, 0.25);
+}
+
+.c4-modal-btn.btn-primary:hover {
+  background: linear-gradient(135deg, #f472b6 0%, #ec4899 100%);
+  box-shadow: 0 3px 10px rgba(236, 72, 153, 0.35);
+}
+
+.c4-modal-btn.btn-secondary {
+  background: #151d38;
+  border: 1px solid rgba(6, 182, 212, 0.4);
+  color: #e2e8f0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+.c4-modal-btn.btn-secondary:hover {
+  background: #1b264a;
+  border-color: #06b6d4;
+  color: #ffffff;
+  box-shadow: 0 2px 10px rgba(6, 182, 212, 0.25);
+}
+
+/* ========================================================
+   5. MOBILE ADJUSTMENTS (NO BLACK GAP ON TOP)
+   ======================================================== */
+@media (max-width: 520px) {
+  .c4-viewport {
+    padding: 12px 14px;
+    height: 100% !important;
+    min-height: calc(100dvh - 50px) !important;
+    max-height: calc(100dvh - 50px) !important;
+    overflow: hidden;
+    background-color: #070919;
+    background-image: 
+      radial-gradient(circle at 50% 0%, rgba(6, 182, 212, 0.3) 0%, transparent 60%),
+      radial-gradient(circle at 85% 15%, rgba(6, 182, 212, 0.22) 0%, transparent 45%),
+      radial-gradient(circle at 15% 85%, rgba(236, 72, 153, 0.2) 0%, transparent 50%),
+      radial-gradient(circle, rgba(6, 182, 212, 0.14) 2.5px, transparent 3.5px),
+      linear-gradient(45deg, rgba(255, 255, 255, 0.015) 25%, transparent 25%),
+      linear-gradient(-45deg, rgba(255, 255, 255, 0.015) 25%, transparent 25%) !important;
+    background-size: 
+      100% 100%,
+      100% 100%, 
+      100% 100%, 
+      40px 40px, 
+      80px 80px, 
+      80px 80px !important;
+  }
+
+  /* Medium & Visible Card on Phone Screen */
+  .c4-mode-card {
+    width: min(94vw, 395px) !important;
+    padding: 24px 20px 20px !important;
+    border-radius: 22px !important;
+    gap: 15px !important;
+  }
+
+  .c4-title-box {
+    padding: 18px 16px 16px !important;
+    border-radius: 17px !important;
+    gap: 10px !important;
+  }
+
+  .c4-sub-badge {
+    font-size: 11px !important;
+    letter-spacing: 1.2px !important;
+  }
+
+  .c4-main-title {
+    font-size: 21px !important;
+    letter-spacing: 1.5px !important;
+  }
+
+  .c4-pick-subtitle {
+    font-size: 12.5px !important;
+    color: #94a3b8 !important;
+  }
+
+  /* 4x4 Grid Emblem */
+  .c4-grid-emblem {
+    grid-template-columns: repeat(4, 16px) !important;
+    grid-template-rows: repeat(4, 16px) !important;
+    gap: 7px !important;
+  }
+
+  .c4-grid-disc {
+    width: 16px !important;
+    height: 16px !important;
+  }
+
+  /* Color Choice Cards */
+  .c4-color-picker-grid {
+    gap: 12px !important;
+  }
+
+  .color-choice-card {
+    padding: 15px 10px !important;
+    border-radius: 16px !important;
+    gap: 7px !important;
+  }
+
+  .c4-choice-disc {
+    width: 38px !important;
+    height: 38px !important;
+    margin-bottom: 2px !important;
+  }
+
+  .choice-title {
+    font-size: 12.5px !important;
+    letter-spacing: 0.3px !important;
+  }
+
+  .choice-turn-tag {
+    font-size: 10px !important;
+  }
+
+  /* Back Button */
+  .c4-back-link-btn {
+    font-size: 13px !important;
+    margin-top: 10px !important;
+    padding: 5px 12px !important;
+  }
+
+  /* 2-Player Name Input Row */
+  .c4-names-form {
+    gap: 11px !important;
+  }
+
+  .c4-name-input-row {
+    padding: 12px 14px !important;
+    border-radius: 14px !important;
+    gap: 11px !important;
+  }
+
+  .c4-input-disc-indicator {
+    width: 25px !important;
+    height: 25px !important;
+  }
+
+  .c4-name-input {
+    font-size: 14.5px !important;
+  }
+
+  /* Mode Pill Buttons */
+  .c4-mode-pill-btn {
+    padding: 13px 18px !important;
+    font-size: 13px !important;
+    border-radius: 13px !important;
+  }
+
+  /* Gameplay Arena on Mobile */
+  .c4-game-container {
+    width: 100% !important;
+    padding: 10px 10px 12px !important;
+    border-radius: 18px !important;
+    gap: 8px !important;
+  }
+
+  .c4-top-bar {
+    font-size: 11px !important;
+  }
+
+  .c4-mode-tag {
+    font-size: 10.5px !important;
+    padding: 4px 8px !important;
+  }
+
+  .c4-turn-pill {
+    font-size: 11.5px !important;
+    padding: 4px 10px !important;
+  }
+
+  .turn-indicator-disc {
+    width: 9px !important;
+    height: 9px !important;
+  }
+
+  .c4-board-stand {
+    padding: 6px 6px 8px !important;
+    border-width: 2.5px !important;
+    border-radius: 14px !important;
+  }
+
+  .c4-col-drop-bar,
+  .c4-grid {
+    gap: 4px !important;
+  }
+
+  .c4-drop-btn {
+    font-size: 13px !important;
+    padding: 2.5px 0 !important;
+    border-radius: 5px !important;
+  }
+
+  .c4-pill-btn {
+    padding: 8px 10px !important;
+    font-size: 12px !important;
+  }
+
+  /* Victory modal on Mobile */
+  .c4-victory-card {
+    padding: 22px 18px 20px !important;
+    border-radius: 20px !important;
+  }
+
+  .c4-victory-title {
+    font-size: 20px !important;
+  }
+
+  .c4-victory-hero-icon {
+    font-size: 38px !important;
+  }
+}

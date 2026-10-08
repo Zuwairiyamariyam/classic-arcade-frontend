@@ -1,9 +1,9 @@
 /* =========================================================
-   ARCADE DASHBOARD - SPACIOUS ZERO SCROLL 100VH LAYOUT
+   ARCADE DASHBOARD - SPACIOUS ZERO SCROLL 100DVH LAYOUT
 ========================================================= */
 .arcade-viewport {
-  height: 100vh;
-  max-height: 100vh;
+  height: 100dvh;
+  max-height: 100dvh;
   width: 100vw;
   max-width: 100vw;
   background-color: #0a0c10;
@@ -16,12 +16,13 @@
   flex-direction: column;
   align-items: center;
   justify-content: center; 
-  gap: 24px;               
-  padding: 20px;
+  gap: 20px;               
+  padding: 16px;
   box-sizing: border-box;
   position: relative;
   overflow: hidden !important;
   user-select: none;
+  touch-action: none;
 }
 
 /* Background Ambient Glow */
@@ -51,14 +52,16 @@
   z-index: 2;
   margin: 0;
   flex-shrink: 0;
+  width: 100%;
 }
 
 .arcade-title {
-  font-size: clamp(22px, 4vw, 38px);
+  font-size: clamp(16px, 3.8vw, 34px);
   font-weight: 900;
   margin: 0;
   color: #ffffff;
-  letter-spacing: -0.5px;
+  letter-spacing: -0.3px;
+  white-space: nowrap !important;
 }
 
 .title-highlight {
@@ -74,8 +77,8 @@
 .arcade-horizontal-list {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  max-width: 700px;
+  gap: 14px;
+  max-width: 650px;
   width: 100%;
   z-index: 2;
   margin: 0;
@@ -86,7 +89,7 @@
   background: #11141c;
   border: 1.5px solid #1f2636;
   border-radius: 16px;
-  padding: 14px 24px;
+  padding: 12px 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -108,16 +111,16 @@
 .card-left-group {
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 14px;
   min-width: 0;
   flex: 1;
 }
 
 .game-logo-badge {
-  font-size: 24px;
+  font-size: 22px;
   background: #1c2230;
-  width: 48px;
-  height: 48px;
+  width: 44px;
+  height: 44px;
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -131,13 +134,11 @@
 
 .game-heading {
   margin: 0;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 800;
   color: #ffffff;
-  letter-spacing: 0.3px;
+  letter-spacing: 0.2px;
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 /* Right: Play Now Pill */
@@ -145,7 +146,7 @@
   display: flex;
   align-items: center;
   flex-shrink: 0;
-  margin-left: 12px;
+  margin-left: 8px;
 }
 
 .play-btn-pill {
@@ -153,7 +154,7 @@
   font-weight: 700;
   color: #ffffff;
   background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
-  padding: 8px 18px;
+  padding: 8px 16px;
   border-radius: 20px;
   box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
   letter-spacing: 0.3px;
@@ -172,7 +173,7 @@
 
 /* Footer */
 .arcade-footer {
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 600;
   color: #94a3b8;
   text-align: center;
@@ -192,6 +193,7 @@
   z-index: 9999;
   display: flex;
   flex-direction: column;
+  overflow: hidden !important;
   animation: modalFadeIn 0.2s ease-out;
 }
 
@@ -243,68 +245,132 @@
 
 .game-modal-content {
   flex: 1;
-  overflow: auto;
+  overflow: hidden !important;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   background: #000;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+.game-modal-content::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
 }
 
 /* =========================================================
-   MOBILE RESPONSIVE (Tall, Medium & Small Screens)
+   MOBILE RESPONSIVE (PROMINENT, BIG & CLEAR SINGLE-LINE TITLE)
 ========================================================= */
 @media (max-width: 550px) {
   .arcade-viewport {
-    justify-content: center !important; 
-    gap: 22px !important;              /* Header, cards, footer close and balanced */
-    padding: 16px 14px;
+    gap: 12px !important;
+    padding: 10px 10px !important; /* side space reduce panni text-ku full space tharom */
+    height: 100dvh;
+    max-height: 100dvh;
+    overflow: hidden !important;
   }
+  
   .arcade-header {
-    margin-bottom: 4px;
+    margin-top: -8px !important;
+    margin-bottom: 0px !important;
+    transform: translateY(-4px) !important; /* Mela shift aagum */
+    width: 100% !important;
+    padding: 0 4px !important;
   }
+  
+  /* Nalla periya bold single-line title */
   .arcade-title {
-    font-size: 24px;
+    font-size: clamp(19px, 5.6vw, 24px) !important;
+    font-weight: 900 !important;
+    white-space: nowrap !important;
+    letter-spacing: -0.6px !important;
+    line-height: 1.2 !important;
+    display: block !important;
+    text-align: center !important;
   }
+  
   .arcade-horizontal-list {
-    gap: 12px;
+    gap: 9px;
     width: 100%;
   }
+  
   .arcade-horizontal-card {
-    padding: 11px 16px;
+    padding: 9px 12px;
     border-radius: 14px;
   }
+  
   .card-left-group {
-    gap: 12px;
+    gap: 10px;
+    flex: 1;
+    min-width: 0;
   }
+  
   .game-logo-badge {
-    width: 40px;
-    height: 40px;
-    font-size: 20px;
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
     border-radius: 10px;
   }
+  
   .game-heading {
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 700;
+    white-space: nowrap;
+    overflow: visible !important;
+    text-overflow: clip !important;
   }
+  
   .play-btn-pill {
-    padding: 7px 14px;
-    font-size: 12px;
+    padding: 6px 11px;
+    font-size: 11px;
     letter-spacing: 0;
   }
-  .arcade-footer {
-    font-size: 12px;
-    margin-top: 4px; 
+  
+  .card-right-group {
+    margin-left: 6px;
   }
+  
+  .arcade-footer {
+    font-size: 10.5px !important;
+    margin-top: 0px !important;
+    margin-bottom: -4px !important;
+    transform: translateY(5px) !important; /* Keezhe shift aagum */
+  }
+  
   .game-modal-header {
     height: 46px;
     padding: 0 10px;
   }
+  
   .modal-close-btn {
     padding: 5px 10px;
     font-size: 11px;
   }
+  
   .modal-game-name {
     font-size: 11px;
+  }
+}
+
+/* Extra Small Devices (< 370px) - Inga kutty aagadha maari perusaave fix panniyachu */
+@media (max-width: 370px) {
+  .arcade-title {
+    font-size: 18px !important;
+    letter-spacing: -0.7px !important;
+  }
+  .game-heading {
+    font-size: 12.5px;
+  }
+  .play-btn-pill {
+    padding: 5px 9px;
+    font-size: 10.5px;
+  }
+  .game-logo-badge {
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
   }
 }

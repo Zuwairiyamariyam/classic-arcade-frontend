@@ -82,12 +82,10 @@ export const playDiceRollSound = () => {
       diceAudioInstance = new Audio("/diceroll.mp3");
     }
 
-    // Previous timer running-la irundha clear pannuvom
     if (diceStopTimer) {
       clearTimeout(diceStopTimer);
     }
 
-    // 1. Munnaadi gap skip panradhu (Start point)
     diceAudioInstance.currentTime = 0.15; 
     diceAudioInstance.volume = 0.85;
 
@@ -156,7 +154,7 @@ export const playLoseSound = () => {
   });
 };
 
-// 6. Ludo 6 Vizhum Pothu Special Bonus Audio (High-pitch Exciting Ding Chime)
+// 6. Ludo 6 Special Bonus Audio (High-pitch Exciting Ding Chime)
 export const playBonusSixSound = () => {
   if (isMuted) return;
   const ctx = getAudioContext();

@@ -3,7 +3,8 @@
 
 .sliding-puzzle-container {
   width: 100%;
-  min-height: calc(100vh - 55px);
+  height: calc(100vh - 50px);
+  max-height: calc(100vh - 50px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -20,6 +21,16 @@
   color: #f8fafc;
   font-family: 'Plus Jakarta Sans', sans-serif;
   box-sizing: border-box;
+  overflow: hidden !important;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+  touch-action: none;
+}
+
+.sliding-puzzle-container::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
 }
 
 .arcade-panel {
@@ -35,7 +46,7 @@
   box-sizing: border-box;
 }
 
-/* 1. MODE SELECTION SCREEN */
+/* 1. MODE SELECTION SCREEN (DESKTOP / LAPTOP) */
 .puzzle-mode-selection {
   width: min(94vw, 560px);
   padding: 44px 38px;
@@ -181,7 +192,7 @@
 }
 
 /* ========================================================
-   NUMBER MODE (SINGLE LAYOUT)
+   NUMBER MODE (SINGLE LAYOUT - LAPTOP/DESKTOP)
    ======================================================== */
 .single-layout {
   width: min(94vw, 440px);
@@ -247,7 +258,7 @@
 }
 
 /* ========================================================
-   IMAGE MODE (SPLIT LAYOUT - LAPTOP/DESKTOP ENHANCED)
+   IMAGE MODE (SPLIT LAYOUT - LAPTOP/DESKTOP)
    ======================================================== */
 .split-layout {
   width: min(96vw, 1020px);
@@ -283,12 +294,12 @@
   font-weight: 800;
   color: #94a3b8;
   letter-spacing: 1.2px;
-  margin-top: -33px; /* Laptop View: Stays exactly as you liked */
+  margin-top: -33px;
   margin-bottom: 12px;
 }
 
 .preview-frame {
-  width: 260px;  /* Laptop View: Big size */
+  width: 260px;
   height: 260px;
   padding: 5px;
   border-radius: 22px;
@@ -538,17 +549,32 @@
 }
 
 /* ==========================================================================
-   EXCLUSIVE MOBILE RESPONSIVE FIXES (STRICTLY <= 600px ONLY)
+   EXCLUSIVE MOBILE RESPONSIVE FIXES (STRICT ZERO-SCROLL LOCK <= 600px ONLY)
    ========================================================================== */
 @media (max-width: 600px) {
+  /* Dynamic viewport height with total overflow clip */
   .sliding-puzzle-container {
-    padding: 10px 8px !important;
+    padding: 8px 10px !important;
+    height: calc(100dvh - 50px) !important;
+    max-height: calc(100dvh - 50px) !important;
+    overflow: hidden !important;
+    touch-action: none !important;
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+  }
+
+  .sliding-puzzle-container::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
   }
   
   .puzzle-mode-selection {
-    padding: 24px 16px !important;
+    padding: 22px 18px !important;
     border-radius: 20px !important;
-    width: min(92vw, 360px) !important;
+    width: min(94vw, 360px) !important;
+    max-height: 90% !important;
+    overflow: hidden !important;
   }
 
   .puzzle-title {
@@ -557,11 +583,15 @@
 
   .puzzle-subtitle {
     font-size: 13px !important;
-    margin: 6px 0 20px !important;
+    margin: 6px 0 18px !important;
+  }
+
+  .mode-btn-container {
+    gap: 12px !important;
   }
 
   .puzzle-mode-button {
-    padding: 12px 14px !important;
+    padding: 13px 15px !important;
     border-radius: 14px !important;
   }
 
@@ -591,19 +621,26 @@
     font-size: 16px !important;
   }
 
+  /* Compact Game Panel */
   .single-layout,
   .split-layout {
-    padding: 14px 12px !important;
+    padding: 12px 12px 10px !important;
     border-radius: 20px !important;
-    width: min(94vw, 360px) !important;
+    width: min(95vw, 360px) !important;
+    max-height: 92% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 6px !important;
+    overflow: hidden !important;
   }
 
-  /* TOP ROW: Tag Left + Timer Right */
+  /* Top Row */
   .puzzle-top-header-row,
   .split-layout .puzzle-top-header-row,
   .single-layout .puzzle-top-header-row {
     width: 100% !important;
-    margin-bottom: 12px !important;
+    margin-bottom: 4px !important;
     display: flex !important;
     justify-content: space-between !important;
     align-items: center !important;
@@ -611,22 +648,26 @@
 
   .mode-pill-indicator,
   .split-layout .mode-pill-indicator {
-    font-size: 11px !important;
-    padding: 4px 10px !important;
-    height: 32px !important;
+    font-size: 10.5px !important;
+    padding: 3px 8px !important;
+    height: 30px !important;
   }
 
   .header-timer-pill,
   .split-layout .header-timer-pill {
-    height: 32px !important;
-    padding: 4px 10px !important;
+    height: 30px !important;
+    padding: 3px 8px !important;
+    font-size: 12px !important;
+  }
+
+  .header-timer-pill .timer-text {
     font-size: 13px !important;
   }
 
   .split-layout .puzzle-content-wrapper {
     display: flex !important;
     flex-direction: column !important;
-    gap: 10px !important;
+    gap: 6px !important;
     align-items: center !important;
     width: 100% !important;
   }
@@ -636,7 +677,7 @@
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
-    gap: 8px !important;
+    gap: 4px !important;
   }
 
   .puzzle-preview-box {
@@ -644,38 +685,43 @@
     width: 100% !important;
   }
 
-  /* 👉 OVERLAP FIX: Margin-top 0 aakiyirukkom, text header kulla pogaadhu */
   .preview-label,
   .split-layout .preview-label {
-    font-size: 11px !important;
+    font-size: 10px !important;
     letter-spacing: 0.8px !important;
     margin-top: 0px !important;
-    margin-bottom: 6px !important;
+    margin-bottom: 4px !important;
     color: #94a3b8 !important;
     text-align: center !important;
   }
 
   .preview-frame,
   .split-layout .preview-frame {
-    width: 100px !important;
-    height: 100px !important;
-    border-radius: 14px !important;
-    padding: 3px !important;
+    width: 78px !important;
+    height: 78px !important;
+    border-radius: 12px !important;
+    padding: 2.5px !important;
   }
 
   .preview-frame img,
   .split-layout .preview-frame img {
-    border-radius: 11px !important;
+    border-radius: 9px !important;
   }
 
-  /* Board Sizing (Square & proportional) */
-  .split-layout .sliding-puzzle-board,
   .single-layout .sliding-puzzle-board {
-    width: min(84vw, 310px) !important;
-    height: min(84vw, 310px) !important;
+    width: min(78vw, 290px) !important;
+    height: min(78vw, 290px) !important;
     gap: 6px !important;
     padding: 6px !important;
     border-radius: 14px !important;
+  }
+
+  .split-layout .sliding-puzzle-board {
+    width: min(72vw, 260px) !important;
+    height: min(72vw, 260px) !important;
+    gap: 5px !important;
+    padding: 5px !important;
+    border-radius: 13px !important;
   }
 
   .single-layout .puzzle-tile {
@@ -684,20 +730,33 @@
   }
 
   .split-layout .puzzle-tile {
-    border-radius: 8px !important;
+    border-radius: 7px !important;
   }
 
-  /* Bottom Control Action Pills */
-  .split-layout .puzzle-bottom-controls,
-  .single-layout .puzzle-bottom-controls {
-    width: min(84vw, 310px) !important;
+  .split-layout .puzzle-bottom-controls {
+    width: min(72vw, 260px) !important;
     gap: 8px !important;
-    margin-top: 8px !important;
+    margin-top: 4px !important;
+  }
+
+  .single-layout .puzzle-bottom-controls {
+    width: min(78vw, 290px) !important;
+    gap: 8px !important;
+    margin-top: 6px !important;
   }
 
   .arcade-control-pill {
-    padding: 8px 12px !important;
-    font-size: 12px !important;
-    border-radius: 10px !important;
+    padding: 7px 10px !important;
+    font-size: 11.5px !important;
+    border-radius: 9px !important;
+  }
+
+  .puzzle-modal-card {
+    padding: 22px 18px 20px !important;
+    border-radius: 20px !important;
+  }
+
+  .modal-title {
+    font-size: 22px !important;
   }
 }

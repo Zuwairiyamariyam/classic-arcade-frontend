@@ -395,7 +395,7 @@ function TicTacToeGame() {
 
             <div className="ttt-turn-announcer">
               {loading
-                ? "🤖 Computer is thinking..."
+                ? "🤖 Computer is thinking"
                 : gameOver
                 ? result
                 : "🎯 Your Turn"}

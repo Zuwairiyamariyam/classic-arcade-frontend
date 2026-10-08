@@ -5,6 +5,7 @@ import { playTileSlideSound, playWinSound } from "../../utils/soundFX";
 
 const SOLVED_BOARD = [1, 2, 3, 4, 5, 6, 7, 8, 0];
 
+// Total 25 Diverse High-Quality Puzzle Images (10 Original + 15 New)
 const IMAGE_OPTIONS = [
   "https://picsum.photos/seed/puzzle-forest/600/600",
   "https://picsum.photos/seed/puzzle-mountains/600/600",
@@ -16,6 +17,22 @@ const IMAGE_OPTIONS = [
   "https://picsum.photos/seed/puzzle-sunset/600/600",
   "https://picsum.photos/seed/puzzle-travel/600/600",
   "https://picsum.photos/seed/puzzle-garden/600/600",
+  // 15 Extra Hand-picked Themes
+  "https://picsum.photos/seed/puzzle-galaxy/600/600",
+  "https://picsum.photos/seed/puzzle-desert/600/600",
+  "https://picsum.photos/seed/puzzle-waterfall/600/600",
+  "https://picsum.photos/seed/puzzle-aurora/600/600",
+  "https://picsum.photos/seed/puzzle-castle/600/600",
+  "https://picsum.photos/seed/puzzle-autumn/600/600",
+  "https://picsum.photos/seed/puzzle-winter/600/600",
+  "https://picsum.photos/seed/puzzle-island/600/600",
+  "https://picsum.photos/seed/puzzle-wildlife/600/600",
+  "https://picsum.photos/seed/puzzle-architecture/600/600",
+  "https://picsum.photos/seed/puzzle-lake/600/600",
+  "https://picsum.photos/seed/puzzle-sunrise/600/600",
+  "https://picsum.photos/seed/puzzle-canyon/600/600",
+  "https://picsum.photos/seed/puzzle-lighthouse/600/600",
+  "https://picsum.photos/seed/puzzle-blossom/600/600",
 ];
 
 IMAGE_OPTIONS.forEach((image) => {
@@ -92,7 +109,7 @@ function SlidingPuzzleGame() {
   useEffect(() => {
     if (isSolved && mode && hasInteracted) {
       setShowWinAlert(true);
-      playWinSound(); // Victory sound!
+      playWinSound();
     }
   }, [isSolved, mode, hasInteracted]);
 
@@ -132,7 +149,7 @@ function SlidingPuzzleGame() {
 
     if (distance !== 1) return;
 
-    playTileSlideSound(); // Tile movement audio
+    playTileSlideSound();
 
     const newBoard = [...board];
     [newBoard[emptyIndex], newBoard[clickedIndex]] = [
