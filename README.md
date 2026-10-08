@@ -1,16 +1,24 @@
-# React + Vite
+# 🕹️ Classic Arcade Game Platform (Frontend)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An interactive, responsive full-stack retro gaming hub built with **React.js** and communicating with a **Spring Boot REST API** backend.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+### 🔗 Project Links & Backend Repository
+* 🎮 **Live Demo:** [classic-arcade-frontend.vercel.app](https://classic-arcade-frontend.vercel.app/)
+* ⚙️ **Backend Repository:** [classic-arcade-backend (Spring Boot & Java)](https://github.com/Zuwairiyamariyam/classic-arcade-backend)
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### ✨ Features
+* 🎲 Multiple classic games with heuristic AI bot logic & solo play modes
+* 🎵 Immersive Web Audio FX with smooth retro sound synthesis
+* 🔄 Real-time state synchronizations via Spring Boot REST endpoints
+* 📱 100% Mobile & Desktop responsive layout
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 🛠️ Tech Stack
+* **Frontend:** React.js,CSS3, Vite, Web Audio API
+* **Backend:** Java, Spring Boot, RESTful APIs
+* **Deployment:** Vercel (Frontend) & Render (Backend)
